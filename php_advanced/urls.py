@@ -22,5 +22,6 @@ urlpatterns = [
     url(r"^hello/(?P<name>\w+)$", example_views.hello_name),
     url(r"^hello_template$", example_views.hello_world_template),
     url(r"^gift_list_by_func_view/$", example_views.simple_list_view),
+    url(r"^gift_list_by_class_view/$", example_views.GiftListListView.as_view()),
     url(r"^admin/", admin.site.urls),
 ]
