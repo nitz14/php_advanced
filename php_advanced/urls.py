@@ -19,5 +19,6 @@ from example import views as example_views
 
 urlpatterns = [
     url(r"^hello$", example_views.hello_world),
+    url(r"^hello/(?P<name>\w+)$", example_views.hello_name),
     url(r"^admin/", admin.site.urls),
 ]
