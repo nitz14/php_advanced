@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  php_advanced:
+    build: ./
+    volumes:
+      - .:/source
+    ports:
+      - "8000:8000"
+    environment:
+      PROJECT_SETTINGS: php_advanced.settings
+    tty: true
