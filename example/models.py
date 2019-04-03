@@ -14,7 +14,9 @@ class GiftList(models.Model):
 
 class Gift(models.Model):
     name = models.CharField(max_length=128)
-    gift_list = models.ForeignKey(GiftList, on_delete=models.CASCADE)
+    gift_list = models.ForeignKey(
+        GiftList, related_name="gift", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name

@@ -6,7 +6,22 @@
     <div class="panel-body">
         <ul>
             {% for gfl in gfl_entries %}
-            <li>{{ gfl.name }}</li>
+            <li>
+                {{ gfl.name }}
+                <a href="{% url 'delete_gfl' pk=gfl.pk %}"><b>Delete</b></a>
+                <a href="{% url 'edit_gfl' pk=gfl.pk %}"><b>Edit</b></a>
+            </li>
+            {% if gfl.gift.count > 0 %}
+            <ul>
+                {% for gift in gfl.gift.all %}
+                <li>
+                    {{gift.name}}
+                    <a href="{% url 'delete_gift' pk=gift.pk %}"><b>Delete</b></a>
+                    <a href="{% url 'edit_gift' pk=gift.pk %}"><b>Edit</b></a></li>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>

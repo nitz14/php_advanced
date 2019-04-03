@@ -27,11 +27,27 @@ urlpatterns = [
         example_views.GiftListListView.as_view(),
         name="list_gfl",
     ),
-    url(r"^gift_list/add/$", example_views.PostCreateView.as_view()),
+    url(r"^gift_list/add/$", example_views.PostCreateView.as_view(), name="add_gfl"),
     url(
         r"^gift_list/edit/(?P<pk>\d+)/$",
         example_views.PostEditView.as_view(),
         name="edit_gfl",
+    ),
+    url(
+        r"^gift_list/delete/(?P<pk>\d+)/$",
+        example_views.PostDeleteView.as_view(),
+        name="delete_gfl",
+    ),
+    url(r"^gift/add/$", example_views.PostCreateGiftView.as_view(), name="add_gift"),
+    url(
+        r"^gift/edit/(?P<pk>\d+)/$",
+        example_views.PostEditGiftView.as_view(),
+        name="edit_gift",
+    ),
+    url(
+        r"^gift/delete/(?P<pk>\d+)/$",
+        example_views.PostDeleteGiftView.as_view(),
+        name="delete_gift",
     ),
     url(r"^admin/", admin.site.urls),
 ]

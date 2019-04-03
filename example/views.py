@@ -2,9 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
-from example.forms import GiftListForm
-from example.models import GiftList
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from example.forms import GiftForm, GiftListForm
+from example.models import Gift, GiftList
 
 
 def hello_world(request):
@@ -41,6 +41,41 @@ class PostEditView(UpdateView):
     model = GiftList
     form_class = GiftListForm
     template_name = "add.html"
+
+    @property
+    def success_url(self):
+        return reverse("list_gfl")
+
+
+class PostDeleteView(DeleteView):
+    model = GiftList
+    template_name = "delete.html"
+
+    @property
+    def success_url(self):
+        return reverse("list_gfl")
+
+
+class PostCreateGiftView(CreateView):
+    model = Gift
+    form_class = GiftForm
+    success_url = "/gift/add"
+    template_name = "add.html"
+
+
+class PostEditGiftView(UpdateView):
+    model = Gift
+    form_class = GiftForm
+    template_name = "add.html"
+
+    @property
+    def success_url(self):
+        return reverse("list_gfl")
+
+
+class PostDeleteGiftView(DeleteView):
+    model = Gift
+    template_name = "delete.html"
 
     @property
     def success_url(self):
