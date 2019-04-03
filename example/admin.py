@@ -1,3 +1,5 @@
 from django.contrib import admin
+from example.models import Gift, GiftList
 
-# Register your models here.
+admin.site.register(GiftList)
+admin.site.register(Gift)
