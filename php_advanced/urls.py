@@ -22,7 +22,16 @@ urlpatterns = [
     url(r"^hello/(?P<name>\w+)$", example_views.hello_name),
     url(r"^hello_template$", example_views.hello_world_template),
     url(r"^gift_list_by_func_view/$", example_views.simple_list_view),
-    url(r"^gift_list_by_class_view/$", example_views.GiftListListView.as_view()),
+    url(
+        r"^gift_list_by_class_view/$",
+        example_views.GiftListListView.as_view(),
+        name="list_gfl",
+    ),
     url(r"^gift_list/add/$", example_views.PostCreateView.as_view()),
+    url(
+        r"^gift_list/edit/(?P<pk>\d+)/$",
+        example_views.PostEditView.as_view(),
+        name="edit_gfl",
+    ),
     url(r"^admin/", admin.site.urls),
 ]
